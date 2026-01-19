@@ -4,12 +4,14 @@ require("dotenv").config();
 const app = require("./src/app");
 const connectDB = require("./src/db/db");
 const authRoute = require("./src/routes/auth.route");
+const foodPartnerAuthRoute = require("./src/routes/foodPartnerAuth.route");
 
 connectDB();
 
 const PORT = process.env.PORT || 5021;
 
 app.use("/api/auth", authRoute);
+app.use("/api/auth/food-partner", foodPartnerAuthRoute);
 
 
 app.listen(PORT, () => {
