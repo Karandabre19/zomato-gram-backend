@@ -1,6 +1,9 @@
 // This file is for creating the Express application instance
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const authRoute = require("./routes/auth.route");
+const foodPartnerAuthRoute = require("./routes/foodPartner.auth.route");
+const food = require("./routes/food.route");
 
 const app = express();
 
@@ -10,6 +13,12 @@ app.use(cookieParser());
 app.get("/", () => {
   console.log("Hello from the backend");
 });
+
+app.use("/api/auth", authRoute);
+app.use("/api/auth/food-partner", foodPartnerAuthRoute);
+app.use("/api/food" ,food)
+
+
 
 module.exports = app;
 
